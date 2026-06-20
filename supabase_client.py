@@ -10,6 +10,9 @@ url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_KEY")
 
 
+print("URL:", url)
+
+
 supabase = create_client(url, key)
 
 
@@ -19,8 +22,10 @@ def buscar_contatos():
         supabase
         .table("contatos")
         .select("*")
-        .limit(3)
         .execute()
     )
+
+
+    print(resposta.data)
 
     return resposta.data
